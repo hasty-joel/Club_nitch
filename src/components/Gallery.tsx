@@ -44,6 +44,7 @@ const trendImages = [
   { url: "/gallery/team-excellence.jpg", title: "Team Excellence", category: "2025 Trend" },
   { url: "/gallery/coding-champions.jpg", title: "Coding Champions", category: "2025 Trend" },
   { url: "/gallery/the-hub-family.jpg", title: "The Hub Family", category: "2025 Trend" },
+  { url: "/gallery/the-hub-family.jpg", title: "The Hub Family", category: "2025 Trend" },
 ];
 
 export default function Gallery() {
