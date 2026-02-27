@@ -39,15 +39,14 @@ export default function About() {
               <span className="text-cyan-accent">01.</span> About the Hub
             </h2>
             <p className="text-slate-400 text-lg mb-8 leading-relaxed">
-              We build software that solves real problems.
-              Python started with (‘Hello World’).....
-              now we create automation tools and data apps.
-              Together, we innovate as STAHIZA ICT HUB.
+              Passionate about building software that solves real-world problems. 
+              My journey in Python started with a simple "Hello World" and evolved into 
+              architecting complex automation tools and data-driven applications.
             </p>
             <p className="text-slate-400 text-lg mb-10 leading-relaxed">
-              We write clean, efficient code that follows best practices.
-              From simple calculators to AI chatbots…
-              Logic and efficiency drive everything we build.
+              I focus on writing clean, maintainable code that follows industry best practices. 
+              Whether it's a simple calculator or a sophisticated AI-powered chatbot, 
+              logic and efficiency are at the core of everything I build.
             </p>
 
             <div className="grid grid-cols-2 gap-6">

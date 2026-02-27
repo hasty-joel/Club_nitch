@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
-import { Terminal, Github, Linkedin, Menu, X } from "lucide-react";
+import { Github, Linkedin, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { Logo } from "./Logo";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,9 +18,9 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-dark-bg/80 backdrop-blur-md border-b border-cyan-accent/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-2">
-            <Terminal className="w-6 h-6 text-cyan-accent" />
-            <span className="font-mono font-bold text-white tracking-tighter">
+          <div className="flex items-center gap-3">
+            <Logo className="w-8 h-8" />
+            <span className="font-mono font-bold text-white tracking-tighter text-lg">
               STAHIZA_ICT_HUB<span className="animate-pulse">_</span>
             </span>
           </div>

@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { ChevronRight, Code2 } from "lucide-react";
+import { Logo } from "./Logo";
 
 export default function Hero() {
   return (
@@ -41,6 +42,10 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
+          <div className="flex justify-center mb-8">
+            <Logo className="w-24 h-24" />
+          </div>
+          
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-accent/30 bg-cyan-accent/5 text-cyan-accent text-xs font-mono mb-6">
             <Code2 className="w-3 h-3" />
             <span>v2.0.4 STABLE RELEASE</span>

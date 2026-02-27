@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "motion/react";
+import { Download } from "lucide-react";
 
 const techImages = [
   {
@@ -35,24 +36,15 @@ const techImages = [
 ];
 
 const trendImages = [
-  { url: "/gallery/team-spirit.jpg", title: "Team Spirit", category: "2025 Trend" },
-  { url: "/gallery/focus-&-determination.jpg", title: "Focus & Determination", category: "2025 Trend" },
-  { url: "/gallery/collaborative-coding.jpg", title: "Collaborative Coding", category: "2025 Trend" },
-  { url: "/gallery/victory-moment.jpg", title: "Victory Moment", category: "2025 Trend" },
-  { url: "/gallery/innovation-leaders.jpg", title: "Innovation Leaders", category: "2025 Trend" },
-  { url: "/gallery/future-vision.jpg", title: "Future Vision", category: "2025 Trend" },
-  { url: "/gallery/team-excellence.jpg", title: "Team Excellence", category: "2025 Trend" },
-  { url: "/gallery/coding-champions.jpg", title: "Coding Champions", category: "2025 Trend" },
-  { url: "/gallery/the-hub-family.jpg", title: "The Hub Family", category: "2025 Trend" },
-  { url: "/gallery/iscc.jpg", title: "The Hub Family", category: "2025 Trend" },
-  { url: "/gallery/trend.jpg", title: "Trend", category: "2025 Trend" },
-  { url: "/gallery/stand.jpg", title: "The Hub Family", category: "2025 Trend" },
-  { url: "/gallery/glosh.jpg", title: "The Academics Prefect", category: "2025 Trend" },
-  { url: "/gallery/rel.jpg", title: "The Boys with CJ", category: "2025 Trend" },
-  { url: "/gallery/grp.jpg", title: "The Hub Family", category: "2025 Trend" },
-  { url: "/gallery/school_cl.jpg", title: "The Hub Family celebrating at school", category: "2025 Trend" },
-  { url: "/gallery/iscc.jpg", title: "The Hub Family", category: "2025 Trend" },
-  { url: "/gallery/blk.jpg", title: "The Hub Family", category: "2025 Trend" },
+  { url: "https://ais-pre-27fjmoqixzxap3qj2xdsyc-38617236539.europe-west2.run.app/api/images/92/0", title: "Team Spirit", category: "2025 Trend" },
+  { url: "https://ais-pre-27fjmoqixzxap3qj2xdsyc-38617236539.europe-west2.run.app/api/images/92/1", title: "Focus & Determination", category: "2025 Trend" },
+  { url: "https://ais-pre-27fjmoqixzxap3qj2xdsyc-38617236539.europe-west2.run.app/api/images/92/2", title: "Collaborative Coding", category: "2025 Trend" },
+  { url: "https://ais-pre-27fjmoqixzxap3qj2xdsyc-38617236539.europe-west2.run.app/api/images/92/3", title: "Victory Moment", category: "2025 Trend" },
+  { url: "https://ais-pre-27fjmoqixzxap3qj2xdsyc-38617236539.europe-west2.run.app/api/images/92/4", title: "Innovation Leaders", category: "2025 Trend" },
+  { url: "https://ais-pre-27fjmoqixzxap3qj2xdsyc-38617236539.europe-west2.run.app/api/images/92/5", title: "Future Vision", category: "2025 Trend" },
+  { url: "https://ais-pre-27fjmoqixzxap3qj2xdsyc-38617236539.europe-west2.run.app/api/images/92/6", title: "Team Excellence", category: "2025 Trend" },
+  { url: "https://ais-pre-27fjmoqixzxap3qj2xdsyc-38617236539.europe-west2.run.app/api/images/92/7", title: "Coding Champions", category: "2025 Trend" },
+  { url: "https://ais-pre-27fjmoqixzxap3qj2xdsyc-38617236539.europe-west2.run.app/api/images/92/8", title: "The Hub Family", category: "2025 Trend" },
 ];
 
 export default function Gallery() {
@@ -129,6 +121,27 @@ interface GalleryItemProps {
 }
 
 const GalleryItem: React.FC<GalleryItemProps> = ({ image, index }) => {
+  const handleDownload = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    try {
+      const response = await fetch(image.url);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${image.title.toLowerCase().replace(/\s+/g, '-')}.jpg`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Download failed:", error);
+      // Fallback: open in new tab
+      window.open(image.url, '_blank');
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
@@ -153,6 +166,13 @@ const GalleryItem: React.FC<GalleryItemProps> = ({ image, index }) => {
         <h3 className="text-white font-bold text-lg">
           {image.title}
         </h3>
+        <button
+          onClick={handleDownload}
+          className="mt-4 flex items-center gap-2 text-xs font-mono text-gold-cta hover:text-white transition-colors group/btn"
+        >
+          <Download className="w-3 h-3 group-hover/btn:scale-110 transition-transform" />
+          <span>DOWNLOAD_ASSET</span>
+        </button>
       </div>
 
       {/* Corner Accent */}

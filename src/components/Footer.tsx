@@ -1,4 +1,5 @@
-import { Github, Linkedin, Mail, Twitter, Terminal } from "lucide-react";
+import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Logo } from "./Logo";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -7,8 +8,8 @@ export default function Footer() {
     <footer className="bg-black py-12 border-t border-cyan-accent/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-2">
-            <Terminal className="w-6 h-6 text-cyan-accent" />
+          <div className="flex items-center gap-3">
+            <Logo className="w-6 h-6" />
             <span className="font-mono font-bold text-white tracking-tighter">
               STAHIZA_ICT_HUB<span className="animate-pulse">_</span>
             </span>

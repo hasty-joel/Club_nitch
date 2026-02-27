@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { ExternalLink, Github, Code, Play } from "lucide-react";
+import { ExternalLink, Github, Code, Play, Download } from "lucide-react";
 import { useState } from "react";
 import Playground from "./Playground";
 
@@ -630,6 +630,18 @@ if __name__ == "__main__":
     }
   ];
 
+  const handleDownloadProject = (project: { title: string; code: string }) => {
+    const blob = new Blob([project.code], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `${project.title.toLowerCase().replace(/\s+/g, '-')}.py`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
+  };
+
   return (
     <section id="projects" className="py-24 bg-dark-bg relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -689,13 +701,20 @@ if __name__ == "__main__":
                 ))}
               </div>
 
-              <div className="mt-auto">
+              <div className="mt-auto flex gap-3">
                 <button
                   onClick={() => setActivePlayground({ code: project.code, title: project.title })}
-                  className="w-full py-2 bg-cyan-accent/10 border border-cyan-accent/30 text-cyan-accent text-xs font-bold rounded hover:bg-cyan-accent hover:text-black transition-all flex items-center justify-center gap-2"
+                  className="flex-1 py-2 bg-cyan-accent/10 border border-cyan-accent/30 text-cyan-accent text-xs font-bold rounded hover:bg-cyan-accent hover:text-black transition-all flex items-center justify-center gap-2"
                 >
                   <Play className="w-3 h-3" />
-                  Run & Edit Code
+                  Run & Edit
+                </button>
+                <button
+                  onClick={() => handleDownloadProject(project)}
+                  className="px-3 py-2 bg-gold-cta/10 border border-gold-cta/30 text-gold-cta text-xs font-bold rounded hover:bg-gold-cta hover:text-black transition-all flex items-center justify-center"
+                  title="Download Source Code"
+                >
+                  <Download className="w-3 h-3" />
                 </button>
               </div>
             </motion.div>
