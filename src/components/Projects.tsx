@@ -8,165 +8,147 @@ export default function Projects() {
 
   const projects = [
     {
-      title: "Python Calculator",
-      desc: "A robust CLI calculator supporting advanced mathematical operations and history tracking.",
-      features: ["Loops", "Error Handling", "Math Module"],
+      title: "NITA-U Email Validator",
+      desc: "Official government email domain validator for checking .go.ug addresses with interactive progress tracking.",
+      features: ["Domain Validation", "Input Processing", "Looping"],
       github: "#",
       demo: "#",
-      code: `import math
+      code: `# NITA-U Government Email Domain Validator
+# This program checks whether email addresses end with "go.ug"
+import sys
+import time
 
-def calculate():
-    print("--- Python Calculator ---")
-    print("Operations: +, -, *, /, sqrt")
+def percent_loader(text="Processing", speed=0.01):
+    for i in range(101):
+        sys.stdout.write(f"\\r{text}... {i}%")
+        sys.stdout.flush()
+        time.sleep(speed)
+    print("\\nComplete.")
+
+def check_emails():
+    n = 0
+    print("=" * 50)
+    print(" NITA-U OFFICIAL EMAIL DOMAIN VALIDATOR ")
+    print("=" * 50)
     
     try:
-        num1 = float(input("Enter first number: "))
-        op = input("Enter operator: ")
+        # Ask user how many emails they want to check
+        # Note: In this playground, we simulate inputs for demo
+        print("\\n[DEMO MODE] Validating 2 sample emails...")
+        number = 2
         
-        if op == 'sqrt':
-            print(f"Result: {math.sqrt(num1)}")
-            return
+        # variables
+        valid_email = []
+        invalid_email = []
+        emails = ["contact@nita.go.ug", "user@gmail.com"]
 
-        num2 = float(input("Enter second number: "))
+        print("\\nValidation Results:")
+        print("-" * 20)
+
+        time.sleep(1)
+        print("Checking server.....\\n")
+
+        time.sleep(1)
+        print("Analysing for [go.ug].........\\n ")
+
+        print("Validating.............\\n")
+        time.sleep(1)
+        percent_loader()
+
+
+        # Validate each email
+        for email in emails:
+            cleaned_email = email.strip().lower()   # remove spaces & handle uppercase
+            n += 1
+            if cleaned_email.endswith("go.ug"):
+                print(f"Email {n} => valid")
+                valid_email.append(email)
+            else:
+                print(f"Email {n} => invalid")
+                invalid_email.append(email)
+
+        if len(valid_email) > 1:
+            print("Valid emails => " , *valid_email)
+        else:
+            print("Valid_email => " , *valid_email)
+
+        if len(invalid_email) > 1:
+            print("Invalid emails => " , *invalid_email)
+        else:
+            print("Invalid_email => ", *invalid_email)
         
-        if op == '+': print(f"Result: {num1 + num2}")
-        elif op == '-': print(f"Result: {num1 - num2}")
-        elif op == '*': print(f"Result: {num1 * num2}")
-        elif op == '/': print(f"Result: {num1 / num2}")
-        else: print("Invalid operator")
-    except Exception as e:
-        print(f"Error: {e}")
 
-# In this playground, we simulate inputs for demo
-print("Simulating calculation: 10 * 5")
-print(f"Result: {10 * 5}")
-print("\\nTry writing your own logic below!")
+    except ValueError:
+        print("Invalid input. Please enter a valid number.")
+
+# Run the program once for demo
+check_emails()
 `
     },
     {
-      title: "File Organizer Script",
-      desc: "An automation tool that sorts files into categorized folders based on extension and metadata.",
-      features: ["OS Module", "Shutil", "File I/O"],
+      title: "ISBAT GradeHub",
+      desc: "Secure grade management system with SQLite database, password hashing, and performance visualization.",
+      features: ["SQLite3", "Matplotlib", "Data Analysis", "Security"],
       github: "#",
       demo: "#",
-      code: `import os
+      code: `import sqlite3
+import hashlib
+import json
+from datetime import datetime
 
-# Mock file list for demonstration
-files = ['report.pdf', 'photo.jpg', 'script.py', 'data.csv', 'notes.txt']
-categories = {
-    'Documents': ['.pdf', '.txt', '.csv'],
-    'Images': ['.jpg', '.png'],
-    'Scripts': ['.py']
-}
+# ====================== DATABASE SETUP ======================
+def init_db():
+    """Creating the database"""
+    conn = sqlite3.connect('isbat_gradehub.db')
+    c = conn.cursor()
+    c.execute('''CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT UNIQUE NOT NULL,
+        password_hash TEXT NOT NULL,
+        full_name TEXT NOT NULL
+    )''')
+    c.execute('''CREATE TABLE IF NOT EXISTS performance_records (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id INTEGER NOT NULL,
+        timestamp TEXT NOT NULL,
+        average REAL NOT NULL,
+        percentage REAL NOT NULL,
+        results_json TEXT NOT NULL,
+        FOREIGN KEY (user_id) REFERENCES users(id)
+    )''')
+    conn.commit()
+    conn.close()
 
-print("--- File Organizer Simulation ---")
-for file in files:
-    ext = os.path.splitext(file)[1]
-    for cat, exts in categories.items():
-        if ext in exts:
-            print(f"Moving {file} to {cat}/")
-            break
-`
-    },
-    {
-      title: "Simple AI Chatbot",
-      desc: "A rule-based chatbot using NLP techniques to provide intelligent responses to user queries.",
-      features: ["String Manipulation", "Regex", "JSON"],
-      github: "#",
-      demo: "#",
-      code: `import random
+def hash_password(password: str) -> str:
+    return hashlib.sha256(password.encode('utf-8')).hexdigest()
 
-responses = {
-    "hello": ["Hi there!", "Hello!", "Greetings!"],
-    "how are you": ["I'm doing great, thanks!", "I'm just a bunch of code, but I'm happy!"],
-    "python": ["Python is my favorite language!", "I love indentation!"],
-    "default": ["That's interesting!", "Tell me more.", "I'm not sure I understand."]
-}
+def get_letter_grade(ave: float) -> str:
+    if ave >= 90: return "A+ LEGEND"
+    elif ave >= 80: return "A EXCELLENT"
+    elif ave >= 70: return "B+ STRONG"
+    elif ave >= 60: return "B SOLID"
+    elif ave >= 50: return "C AVERAGE"
+    elif ave >= 40: return "D NEEDS WORK"
+    else: return "F KEEP PUSHING"
 
-def chatbot_response(user_input):
-    user_input = user_input.lower()
-    for key in responses:
-        if key in user_input:
-            return random.choice(responses[key])
-    return random.choice(responses["default"])
+# ====================== DEMO EXECUTION ======================
+print("--- ISBAT GradeHub System Initializing ---")
+init_db()
+print("Database connected successfully.")
 
-print("Chatbot: Hello! Type something to chat.")
-test_inputs = ["Hello", "How are you?", "Tell me about Python"]
-for inp in test_inputs:
-    print(f"User: {inp}")
-    print(f"Chatbot: {chatbot_response(inp)}")
-`
-    },
-    {
-      title: "Data Analysis Script",
-      desc: "A script that processes data using NumPy to generate statistical summaries and insights.",
-      features: ["NumPy", "Statistics", "Data Processing"],
-      github: "#",
-      demo: "#",
-      code: `import numpy as np
+# Mock data for demo
+full_name = "STAHIZA STUDENT"
+results = {"Python": 95, "Database": 88, "Networking": 72}
+ave = sum(results.values()) / len(results)
+grade = get_letter_grade(ave)
 
-# Creating a random dataset
-data = np.random.normal(100, 20, 1000)
-
-print("--- NumPy Data Analysis ---")
-print(f"Mean: {np.mean(data):.2f}")
-print(f"Median: {np.median(data):.2f}")
-print(f"Standard Deviation: {np.std(data):.2f}")
-print(f"Max Value: {np.max(data):.2f}")
-print(f"Min Value: {np.min(data):.2f}")
-
-# Finding values above a threshold
-threshold = 130
-above_threshold = data[data > threshold]
-print(f"\\nPercentage of values above {threshold}: {len(above_threshold)/len(data)*100:.1f}%")
-`
-    },
-    {
-      title: "Automation Tool",
-      desc: "A web scraping utility that monitors price changes and sends desktop notifications.",
-      features: ["BeautifulSoup", "Requests", "Threading"],
-      github: "#",
-      demo: "#",
-      code: `import time
-
-def monitor_price(item, target_price):
-    print(f"Monitoring {item} for price below \${target_price}...")
-    # Simulated price check
-    current_price = 120
-    print(f"Current price: \${current_price}")
-    
-    if current_price <= target_price:
-        print("NOTIFICATION: Price dropped! Buy now!")
-    else:
-        print("Price still too high.")
-
-monitor_price("Tech Gadget", 100)
-`
-    },
-    {
-      title: "Task Manager API",
-      desc: "A lightweight backend service for managing to-do lists with persistent storage.",
-      features: ["OOP", "SQLite", "API Design"],
-      github: "#",
-      demo: "#",
-      code: `class TaskManager:
-    def __init__(self):
-        self.tasks = []
-
-    def add_task(self, title):
-        self.tasks.append({"title": title, "completed": False})
-        print(f"Added task: {title}")
-
-    def list_tasks(self):
-        print("\\n--- Current Tasks ---")
-        for i, task in enumerate(self.tasks):
-            status = "[X]" if task['completed'] else "[ ]"
-            print(f"{i+1}. {status} {task['title']}")
-
-manager = TaskManager()
-manager.add_task("Learn Pyodide")
-manager.add_task("Build ICT Hub")
-manager.list_tasks()
+print(f"\\nStudent: {full_name}")
+print("-" * 30)
+for sub, mark in results.items():
+    print(f"{sub:<15}: {mark} marks")
+print("-" * 30)
+print(f"OVERALL AVERAGE: {ave:.1f}")
+print(f"FINAL GRADE    : {grade}")
 `
     }
   ];
