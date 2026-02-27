@@ -4,6 +4,7 @@ import About from "./components/About";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import LiveConsole from "./components/LiveConsole";
+import Gallery from "./components/Gallery";
 import Footer from "./components/Footer";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -23,6 +24,7 @@ export default function App() {
           <Projects />
           <Skills />
           <LiveConsole />
+          <Gallery />
         </main>
         <Footer />
       </motion.div>
