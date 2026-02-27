@@ -36,16 +36,24 @@ const techImages = [
 ];
 
 const trendImages = [
-  { url: "/gallery/team-spirit.jpg", title: "Team Spirit", category: "2025 Trend" },
-  { url: "/gallery/focus-&-determination.jpg", title: "Focus & Determination", category: "2025 Trend" },
-  { url: "/gallery/collaborative-coding.jpg", title: "Collaborative Coding", category: "2025 Trend" },
-  { url: "/gallery/victory-moment.jpg", title: "Victory Moment", category: "2025 Trend" },
-  { url: "/gallery/innovation-leaders.jpg", title: "Innovation Leaders", category: "2025 Trend" },
-  { url: "/gallery/future-vision.jpg", title: "Future Vision", category: "2025 Trend" },
-  { url: "/gallery/team-excellence.jpg", title: "Team Excellence", category: "2025 Trend" },
-  { url: "/gallery/coding-champions.jpg", title: "Coding Champions", category: "2025 Trend" },
-  { url: "/gallery/the-hub-family.jpg", title: "The Hub Family", category: "2025 Trend" },
-  { url: "/gallery/the-hub-family.jpg", title: "The Hub Family", category: "2025 Trend" },
+  { url: "/gallery/them.jpg", title: "Team Spirit", category: "2025 Trend" },
+  { url: "/gallery/all.jpg", title: "Focus & Determination", category: "2025 Trend" },
+  { url: "/gallery/pa.jpg", title: "Collaborative Coding", category: "2025 Trend" },
+  { url: "/gallery/sk.jpg", title: "Victory Moment", category: "2025 Trend" },
+  { url: "/gallery/kj.jpg", title: "Innovation Leaders", category: "2025 Trend" },
+  { url: "/gallery/giffy.jpg", title: "Future Vision", category: "2025 Trend" },
+  { url: "/gallery/env.jpg", title: "Team Excellence", category: "2025 Trend" },
+  { url: "/gallery/th.jpg", title: "Coding Champions", category: "2025 Trend" },
+  { url: "/gallery/tl.jpg", title: "The Hub Family", category: "2025 Trend" },
+  { url: "/gallery/iscc.jpg", title: "The Hub Family", category: "2025 Trend" },
+  { url: "/gallery/trend.jpg", title: "Trend", category: "2025 Trend" },
+  { url: "/gallery/stand.jpg", title: "The Hub Family", category: "2025 Trend" },
+  { url: "/gallery/glosh.jpg", title: "The Academics Prefect", category: "2025 Trend" },
+  { url: "/gallery/rel.jpg", title: "The Boys with CJ", category: "2025 Trend" },
+  { url: "/gallery/grp.jpg", title: "The Hub Family", category: "2025 Trend" },
+  { url: "/gallery/school_cl.jpg", title: "The Hub Family celebrating at school", category: "2025 Trend" },
+  { url: "/gallery/iscc.jpg", title: "The Hub Family", category: "2025 Trend" },
+  { url: "/gallery/blk.jpg", title: "The Hub Family", category: "2025 Trend" },
 ];
 
 
