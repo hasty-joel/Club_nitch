@@ -35,15 +35,15 @@ const techImages = [
 ];
 
 const trendImages = [
-  { url: "src/components/img/team-spirit.jpg", title: "Team Spirit", category: "2025 Trend" },
-  { url: "src/components/img/focus-&-determination.jpg", title: "Focus & Determination", category: "2025 Trend" },
-  { url: "src/components/img/collaborative-coding.jpg", title: "Collaborative Coding", category: "2025 Trend" },
-  { url: "src/components/img/victory-moment.jpg", title: "Victory Moment", category: "2025 Trend" },
-  { url: "src/components/img/innovation-leaders.jpg", title: "Innovation Leaders", category: "2025 Trend" },
-  { url: "src/components/img/future-vision.jpg", title: "Future Vision", category: "2025 Trend" },
-  { url: "src/components/img/team-excellence.jpg", title: "Team Excellence", category: "2025 Trend" },
-  { url: "src/components/img/coding-champions.jpg", title: "Coding Champions", category: "2025 Trend" },
-  { url: "src/components/img/the-hub-family.jpg", title: "The Hub Family", category: "2025 Trend" },
+  { url: "/gallery/team-spirit.jpg", title: "Team Spirit", category: "2025 Trend" },
+  { url: "/gallery/focus-&-determination.jpg", title: "Focus & Determination", category: "2025 Trend" },
+  { url: "/gallery/collaborative-coding.jpg", title: "Collaborative Coding", category: "2025 Trend" },
+  { url: "/gallery/victory-moment.jpg", title: "Victory Moment", category: "2025 Trend" },
+  { url: "/gallery/innovation-leaders.jpg", title: "Innovation Leaders", category: "2025 Trend" },
+  { url: "/gallery/future-vision.jpg", title: "Future Vision", category: "2025 Trend" },
+  { url: "/gallery/team-excellence.jpg", title: "Team Excellence", category: "2025 Trend" },
+  { url: "/gallery/coding-champions.jpg", title: "Coding Champions", category: "2025 Trend" },
+  { url: "/gallery/the-hub-family.jpg", title: "The Hub Family", category: "2025 Trend" },
 ];
 
 export default function Gallery() {
