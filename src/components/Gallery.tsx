@@ -44,7 +44,15 @@ const trendImages = [
   { url: "/gallery/team-excellence.jpg", title: "Team Excellence", category: "2025 Trend" },
   { url: "/gallery/coding-champions.jpg", title: "Coding Champions", category: "2025 Trend" },
   { url: "/gallery/the-hub-family.jpg", title: "The Hub Family", category: "2025 Trend" },
-  { url: "/gallery/the-hub-family.jpg", title: "The Hub Family", category: "2025 Trend" },
+  { url: "/gallery/iscc.jpg", title: "The Hub Family", category: "2025 Trend" },
+  { url: "/gallery/trend.jpg", title: "Trend", category: "2025 Trend" },
+  { url: "/gallery/stand.jpg", title: "The Hub Family", category: "2025 Trend" },
+  { url: "/gallery/glosh.jpg", title: "The Academics Prefect", category: "2025 Trend" },
+  { url: "/gallery/rel.jpg", title: "The Boys with CJ", category: "2025 Trend" },
+  { url: "/gallery/grp.jpg", title: "The Hub Family", category: "2025 Trend" },
+  { url: "/gallery/school_cl.jpg", title: "The Hub Family celebrating at school", category: "2025 Trend" },
+  { url: "/gallery/iscc.jpg", title: "The Hub Family", category: "2025 Trend" },
+  { url: "/gallery/blk.jpg", title: "The Hub Family", category: "2025 Trend" },
 ];
 
 export default function Gallery() {
